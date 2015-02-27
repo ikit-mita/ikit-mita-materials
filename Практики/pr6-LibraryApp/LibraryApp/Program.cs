@@ -32,7 +32,8 @@ namespace LibraryApp
             Console.Write("Enter book code:");
             var bookCode = Console.ReadLine();
 
-            var libItem = lib.LibItems.FirstOrDefault(li => li.Code == bookCode);
+            var libItem = lib.LibItems
+                .FirstOrDefault(li => li.Code == bookCode);
 
             if (libItem != null)
             {
