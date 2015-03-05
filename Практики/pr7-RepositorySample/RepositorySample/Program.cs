@@ -41,7 +41,7 @@ namespace RepositorySample
                 Console.WriteLine("New user, id = {0}.", user.Id);
             }
 
-            user = repository.Find(user.Id);
+            user = repository.Find(1);//find user with id = 1
             repository.Remove(user);
 
             foreach (User u1 in repository.GetAll())
