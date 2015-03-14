@@ -1,0 +1,38 @@
+﻿<Window x:Class="TenantsManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="btvConv" />
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+    
+        <ListBox ItemsSource="{Binding Tenands}"
+                 SelectedItem="{Binding SelectedTenant}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Background="{Binding IsDeleted}">
+                        <TextBlock Text="*" Visibility="{Binding IsDeleted, Converter={StaticResource btvConv}}"/>
+                        <TextBlock Text="{Binding Name}"/>
+                        <TextBlock Text="("/>
+                        <TextBlock Text="{Binding Debt}"/>
+                        <TextBlock Text=")"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <StackPanel Grid.Column="1">
+            <TextBox Text="{Binding SelectedTenant.Name}" />
+            <DatePicker SelectedDate="{Binding SelectedTenant.Birthday}"/>
+            <TextBox Text="{Binding SelectedTenant.Debt}" />
+            <CheckBox IsChecked="{Binding SelectedTenant.IsDeleted}">Is Deleted</CheckBox>
+        </StackPanel>
+        
+    </Grid>
+</Window>
