@@ -17,5 +17,7 @@ namespace TenantsManager.Model
         public double Debt { get; set; }
 
         public bool IsDeleted { get; set; }
+
+        public bool IsNew { get { return Id == default(int); } }
     }
 }

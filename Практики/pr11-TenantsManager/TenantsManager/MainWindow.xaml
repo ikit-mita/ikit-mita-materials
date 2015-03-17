@@ -1,23 +1,39 @@
 ﻿<Window x:Class="TenantsManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:tenantsManager="clr-namespace:TenantsManager"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance tenantsManager:MainViewModel}"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
-        <BooleanToVisibilityConverter x:Key="btvConv" />
+        <BooleanToVisibilityConverter x:Key="BtvConv" />
     </Window.Resources>
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <CheckBox IsChecked="{Binding ShowDeleted}">Show deleted</CheckBox>
+        
+        <Button Grid.Row="0" Grid.Column="1" 
+                Command="{Binding CreateTenantCommand}">Add tenant</Button>
     
         <ListBox ItemsSource="{Binding Tenands}"
-                 SelectedItem="{Binding SelectedTenant}">
+                 SelectedItem="{Binding SelectedTenant}"
+                 Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Background="{Binding IsDeleted}">
-                        <TextBlock Text="*" Visibility="{Binding IsDeleted, Converter={StaticResource btvConv}}"/>
+                        <TextBlock Text="*" Visibility="{Binding IsDeleted, Converter={StaticResource BtvConv}}"/>
                         <TextBlock Text="{Binding Name}"/>
                         <TextBlock Text="("/>
                         <TextBlock Text="{Binding Debt}"/>
@@ -27,11 +43,15 @@
             </ListBox.ItemTemplate>
         </ListBox>
         
-        <StackPanel Grid.Column="1">
-            <TextBox Text="{Binding SelectedTenant.Name}" />
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="{Binding SelectedTenant.Id}" />
+            <TextBox Text="{Binding SelectedTenant.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
             <DatePicker SelectedDate="{Binding SelectedTenant.Birthday}"/>
-            <TextBox Text="{Binding SelectedTenant.Debt}" />
+            <toolkit:DoubleUpDown Increment="100" Value="{Binding SelectedTenant.Debt}" />
             <CheckBox IsChecked="{Binding SelectedTenant.IsDeleted}">Is Deleted</CheckBox>
+            <Button Content="Save" Command="{Binding AddNewTenantCommand}"
+                    Visibility="{Binding SelectedTenant.IsNew, Converter={StaticResource BtvConv}, FallbackValue={x:Static Visibility.Collapsed}}"/>
+            <Button Content="Delete tenant" Command="{Binding DeleteTenantCommand}"></Button>
         </StackPanel>
         
     </Grid>
