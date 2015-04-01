@@ -4,10 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
-        xmlns:tenantsManager="clr-namespace:TenantsManager"
+        xmlns:local="clr-namespace:TenantsManager"
         xmlns:converters="clr-namespace:TenantsManager.Converters"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance tenantsManager:MainViewModel}"
+        d:DataContext="{d:DesignInstance local:MainViewModel}"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BtvConv" />
@@ -34,7 +34,7 @@
                  Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Background="{Binding IsDeleted}">
+                    <StackPanel Orientation="Horizontal">
                         <TextBlock Text="*" Visibility="{Binding IsDeleted, Converter={StaticResource BtvConv}}"/>
                         <TextBlock Text="{Binding Name}"/>
                         <TextBlock Text="("/>
@@ -50,24 +50,6 @@
                     Visibility="{Binding SelectedTenant, 
                                             Converter={StaticResource NtvConv}, 
                                             ConverterParameter={x:Static Visibility.Collapsed}}">
-            <Grid.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Margin" Value="0,0,10,0" />
-                </Style>
-                <Style TargetType="TextBox">
-                    <Setter Property="Margin" Value="0,0,0,10" />
-                </Style>
-                <Style TargetType="DatePicker">
-                    <Setter Property="Margin" Value="0,0,0,10" />
-                </Style>
-                <Style TargetType="toolkit:DoubleUpDown">
-                    <Setter Property="Margin" Value="0,0,0,10" />
-                </Style>
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -77,18 +59,11 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Unique ID" />
-            <TextBlock Grid.Row="1" Text="Name" />
-            <TextBlock Grid.Row="2" Text="Birthday" />
-            <TextBlock Grid.Row="3" Text="Dept" />
-
-            <TextBlock Grid.Column="1" Grid.Row="0" 
-                       Text="{Binding SelectedTenant.Id}" 
-                       Margin="0,0,10,10" />
-            <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedTenant.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <DatePicker Grid.Column="1" Grid.Row="2" SelectedDate="{Binding SelectedTenant.Birthday}"/>
-            <toolkit:DoubleUpDown Grid.Column="1" Grid.Row="3" Increment="100" Value="{Binding SelectedTenant.Debt}" />
-            <CheckBox Grid.Column="1" Grid.Row="4" IsEnabled="False" IsChecked="{Binding SelectedTenant.IsDeleted}">Is Deleted</CheckBox>
+            <local:TenantsEditor Tenant="{Binding SelectedTenant}"
+                                 IsReadonly="{Binding SelectedTenant.IsDeleted}">
+                
+            </local:TenantsEditor>
+            
             <Button Grid.Row="5" Grid.Column="1"
                     Content="Delete tenant" 
                     Command="{Binding DeleteTenantCommand}"></Button>
@@ -96,20 +71,6 @@
                     Content="Save" Command="{Binding AddNewTenantCommand}"
                     Visibility="{Binding SelectedTenant.IsNew, Converter={StaticResource BtvConv}, FallbackValue={x:Static Visibility.Collapsed}}"/>
         </Grid>
-        
-        <!--<StackPanel Grid.Column="1" Grid.Row="1"
-                    Visibility="{Binding SelectedTenant, 
-                                            Converter={StaticResource NtvConv}, 
-                                            ConverterParameter={x:Static Visibility.Collapsed}}">
-            <TextBlock Text="{Binding SelectedTenant.Id}" />
-            <TextBox Text="{Binding SelectedTenant.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-            <DatePicker SelectedDate="{Binding SelectedTenant.Birthday}"/>
-            <toolkit:DoubleUpDown Increment="100" Value="{Binding SelectedTenant.Debt}" />
-            <CheckBox IsEnabled="False" IsChecked="{Binding SelectedTenant.IsDeleted}">Is Deleted</CheckBox>
-            <Button Content="Save" Command="{Binding AddNewTenantCommand}"
-                    Visibility="{Binding SelectedTenant.IsNew, Converter={StaticResource BtvConv}, FallbackValue={x:Static Visibility.Collapsed}}"/>
-            <Button Content="Delete tenant" Command="{Binding DeleteTenantCommand}"></Button>
-        </StackPanel>-->
-        
+                
     </Grid>
 </Window>
