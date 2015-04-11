@@ -1,0 +1,85 @@
+﻿<UserControl 
+    x:Class="BookStore.PayDesk.OrderEditView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:viewModels="clr-namespace:BookStore.PayDesk.ViewModels;assembly=BookStore.PayDesk.ViewModels"
+    xmlns:views="clr-namespace:Mita.Mvvm.Views;assembly=Mita.Mvvm"
+    xmlns:model="clr-namespace:BookStore.DataAccess.Model;assembly=BookStore.DataAccess"
+    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:payDesk="clr-namespace:BookStore.PayDesk"
+    mc:Ignorable="d" Height="480" Width="640" 
+    d:DataContext="{d:DesignInstance viewModels:OrderEditViewModel}"
+    views:ChildViewPresenter.ViewResizeMode="CanMinimize"
+    >
+    <DockPanel Margin="5">
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+            <TextBlock Text="Customer" VerticalAlignment="Center" />
+            <ComboBox ItemsSource="{Binding Customers}" SelectedItem="{Binding Customer}"
+                      DisplayMemberPath="ShortName"
+                      MinWidth="200" Margin="10,0"/>
+        </StackPanel>
+        <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Save" Command="{Binding SaveCommand}" />
+            <Button Content="Cancel" Command="{Binding CloseCommand}" IsCancel="True" />
+        </StackPanel>
+
+        <Grid Margin="0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBox Grid.Column="0" Grid.Row="0"
+                     Text="{Binding ISBN, UpdateSourceTrigger=PropertyChanged}" />
+            <ListBox Grid.Column="0" Grid.Row="1"
+                     ItemsSource="{Binding AvailableBooks}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate DataType="model:BookAmount">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Book.ISBN}" FontWeight="Bold" />
+                            <TextBlock Text="{Binding Book.Title}" />
+                            <StackPanel.InputBindings>
+                                <MouseBinding MouseAction="LeftDoubleClick" 
+                                  Command="{Binding DataContext.AddBookCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type payDesk:OrderEditView}}}" 
+                                  CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBox}}}" />
+                            </StackPanel.InputBindings>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <DataGrid Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"
+                      ItemsSource="{Binding Order.OrderedBooks}" AutoGenerateColumns="False" 
+                      IsReadOnly="True" CanUserSortColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Book">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="model:OrderedBook">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Book.ISBN}" FontWeight="Bold" />
+                                    <TextBlock Text="{Binding Book.Title}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat={}{0:n2}}" />
+                    <DataGridTemplateColumn Header="Amount">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate DataType="model:OrderedBook">
+                                <xctk:IntegerUpDown Value="{Binding Amount, UpdateSourceTrigger=PropertyChanged}" Minimum="1" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+        </Grid>
+    </DockPanel>
+</UserControl>

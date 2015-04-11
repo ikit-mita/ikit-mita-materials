@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="BookStore.PayDesk.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:viewModels="clr-namespace:BookStore.PayDesk.ViewModels;assembly=BookStore.PayDesk.ViewModels"
+    xmlns:mitaViews="clr-namespace:Mita.Mvvm.Views;assembly=Mita.Mvvm"
+    mc:Ignorable="d" 
+    d:DataContext="{d:DesignInstance viewModels:LoginViewModel}"
+    mitaViews:ChildViewPresenter.ViewResizeMode="CanMinimize"
+    IsEnabled="{Binding IsFree}">
+    <Grid Margin="50,30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Login" />
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Password" />
+
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}" MinWidth="200"
+                 Margin="10,0,0,10"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
+                 Margin="10,0,0,10"/>
+
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0"
+                   Text="{Binding ErrorMessage}" Foreground="Red" FontWeight="Bold" />
+
+        <Button Grid.Column="1" Grid.Row="3" Content="Close" Command="{Binding CloseCommand}" IsCancel="True" Opacity="0" IsTabStop="False" />
+        <Button Grid.Column="1" Grid.Row="3" Content="Login" Command="{Binding LoginCommand}" IsDefault="True" Margin="10,10,0,0" />
+    </Grid>
+</UserControl>
