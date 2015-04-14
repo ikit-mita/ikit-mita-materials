@@ -21,6 +21,7 @@
                       MinWidth="200" Margin="10,0"/>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Margin="5,0" Foreground="Red" Text="{Binding ErrorMessage}" />
             <Button Content="Save" Command="{Binding SaveCommand}" />
             <Button Content="Cancel" Command="{Binding CloseCommand}" IsCancel="True" />
         </StackPanel>

@@ -13,6 +13,7 @@ using Mita.Mvvm;
 namespace BookStore.PayDesk.ViewModels
 {
     [Export]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     public class OrderEditViewModel : ChildViewModel
     {
         private Employee _employee;
@@ -21,6 +22,7 @@ namespace BookStore.PayDesk.ViewModels
         private ICollection<Customer> _customers;
         private Customer _customer;
         private ICollection<BookAmount> _availableBooks;
+        private string _errorMessage;
 
         public OrderEditViewModel()
         {
@@ -51,6 +53,17 @@ namespace BookStore.PayDesk.ViewModels
                 _isbn = value;
                 OnPropertyChanged();
                 ReloadBooks();
+            }
+        }
+
+        public string ErrorMessage
+        {
+            get { return _errorMessage; }
+            set
+            {
+                if (value == _errorMessage) return;
+                _errorMessage = value;
+                OnPropertyChanged();
             }
         }
 
@@ -129,8 +142,24 @@ namespace BookStore.PayDesk.ViewModels
                     var bookAmount = bookAmountRepository.GetAll()
                         .Where(ba => ba.BookId == orderedBook.BookId)
                         .First(ba => ba.BranchId == _employee.BranchId);
+
+                    if (orderedBook.Amount > bookAmount.Amount)
+                    {
+                        ErrorMessage = "Max amount for '{0}' is {1}".FormatWith(orderedBook.Book.Title, bookAmount.Amount);
+                        return;
+                    }
+                }
+
+                foreach (var orderedBook in Order.OrderedBooks)
+                {
+                    var bookAmount = bookAmountRepository.GetAll()
+                        .Where(ba => ba.BookId == orderedBook.BookId)
+                        .First(ba => ba.BranchId == _employee.BranchId);
                     bookAmount.Amount -= orderedBook.Amount;
                 }
+
+                Order.Date = DateTime.Now;
+                Order.Customer = Customer;
 
                 RepositoryProvider.SaveChanges();
                 Close(true);

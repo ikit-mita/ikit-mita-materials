@@ -25,9 +25,9 @@ namespace Mita.DataAccess
                 {
                     initials = FirstName[0] + ".";
 
-                    if (MiddleName.IsNullOrEmpty())
+                    if (!MiddleName.IsNullOrEmpty())
                     {
-                        initials = " " + MiddleName[0] + ".";
+                        initials += " " + MiddleName[0] + ".";
                     }
                 }
 

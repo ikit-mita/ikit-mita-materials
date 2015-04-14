@@ -74,7 +74,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ISBN" Binding="{Binding Book.ISBN}" />
                     <DataGridTextColumn Header="Book" Binding="{Binding Book.Title}" MinWidth="200" />
-                    <DataGridTemplateColumn Header="Writers">
+                    <DataGridTemplateColumn Header="Authors">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate DataType="model:BookAmount">
                                 <ItemsControl  ItemsSource="{Binding Book.Writers}">

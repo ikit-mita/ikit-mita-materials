@@ -124,7 +124,11 @@ namespace BookStore.PayDesk.ViewModels
 
         private void CreateOrder()
         {
-
+            var vm = ServiceLocator.GetInstance<OrderEditViewModel>();
+            vm.InitializeAsync(Employee);
+            vm.Parent = this;
+            vm.Show();
+            vm.Closed += OnOrderEditViewModelClosed;
         }
 
         private void OnOrderEditViewModelClosed(object sender, EventArgs e)
