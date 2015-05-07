@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3b9f6ad6-8730-48ef-a84d-a7f5b9743a8e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:12130/CompositeTypeService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CompositeTypeService.xsd" MetadataType="Schema" ID="7a7b3ff7-29e6-4965-9a97-de2c9475deae" SourceId="1" SourceUrl="http://localhost:12130/CompositeTypeService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CompositeTypeService1.xsd" MetadataType="Schema" ID="64476541-6642-4b2c-b429-c7d310aa0b1e" SourceId="1" SourceUrl="http://localhost:12130/CompositeTypeService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CompositeTypeService.disco" MetadataType="Disco" ID="057a2c68-25bd-4b4e-9e02-2d6e868e7e8a" SourceId="1" SourceUrl="http://localhost:12130/CompositeTypeService.svc?disco" />
+    <MetadataFile FileName="CompositeTypeService.wsdl" MetadataType="Wsdl" ID="10128d5f-e72c-4e12-9a0f-d156379b5dd8" SourceId="1" SourceUrl="http://localhost:12130/CompositeTypeService.svc?wsdl" />
+    <MetadataFile FileName="CompositeTypeService2.xsd" MetadataType="Schema" ID="fe96d804-f3fd-457a-a1c8-7704c47a01cd" SourceId="1" SourceUrl="http://localhost:12130/CompositeTypeService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
