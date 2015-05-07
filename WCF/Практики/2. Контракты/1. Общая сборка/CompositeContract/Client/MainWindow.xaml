@@ -1,0 +1,26 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:client="clr-namespace:Client"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <client:MainWindowViewModel />
+    </Window.DataContext>
+    <StackPanel Orientation="Horizontal">
+        <StackPanel>
+            <Label Content="String request" />
+            <TextBox Text="{Binding StringRequest, Mode=TwoWay}" />
+            <CheckBox Content="Bool request" IsChecked="{Binding BoolRequest, Mode=TwoWay}" />
+            <Button Content="Send request" Command="{Binding CompositeTypeCommand}" />
+            <Label Content="String response" />
+            <TextBox HorizontalAlignment="Left" Text="{Binding StringResponce, Mode=TwoWay}" />
+            <CheckBox Content="Bool response" IsChecked="{Binding BoolResponce, Mode=TwoWay}" />
+        </StackPanel>
+        <StackPanel Margin="50,0,0,0">
+            <CheckBox Content="Answer request" IsChecked="{Binding AnswerRequest, Mode=TwoWay}" />
+            <Button Content="Get answer" Command="{Binding AnswerCommand}" />
+            <Label Content="Answer response" />
+            <TextBox Text="{Binding AnswerResponce}" />
+        </StackPanel>
+    </StackPanel>
+</Window>
