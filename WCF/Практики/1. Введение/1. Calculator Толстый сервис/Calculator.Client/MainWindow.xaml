@@ -1,0 +1,20 @@
+﻿<Window x:Class="Calculator.Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:client="clr-namespace:Calculator.Client"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <client:MainWindowViewModel />
+    </Window.DataContext>
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="A" />
+            <TextBox Text="{Binding A, Mode=TwoWay}" />
+            <TextBlock Text="B" />
+            <TextBox Text="{Binding B, Mode=TwoWay}" />
+            <TextBlock Text="A+B" />
+            <TextBox Text="{Binding Sum}" />
+            <Button Content="Sum" Command="{Binding SumCommand}" />
+        </StackPanel>
+    </Grid>
+</Window>
