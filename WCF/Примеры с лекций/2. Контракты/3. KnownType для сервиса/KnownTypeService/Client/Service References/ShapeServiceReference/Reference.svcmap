@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3a9fa3b2-25f3-47a4-b2cd-d5cbacdfe3e2" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:14174/ShapeService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ShapeService.disco" MetadataType="Disco" ID="dc12f02a-8e0c-464a-8a14-9f854c1837e4" SourceId="1" SourceUrl="http://localhost:14174/ShapeService.svc?disco" />
+    <MetadataFile FileName="ShapeService.xsd" MetadataType="Schema" ID="27ffe667-85c9-42ea-a715-5fbf7c381304" SourceId="1" SourceUrl="http://localhost:14174/ShapeService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ShapeService1.xsd" MetadataType="Schema" ID="6421a4b0-3577-4fde-b3b7-c38568000ccb" SourceId="1" SourceUrl="http://localhost:14174/ShapeService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ShapeService.wsdl" MetadataType="Wsdl" ID="8278ef38-71e2-4f73-9ad7-b00f0fdabc41" SourceId="1" SourceUrl="http://localhost:14174/ShapeService.svc?wsdl" />
+    <MetadataFile FileName="ShapeService2.xsd" MetadataType="Schema" ID="8e72ec34-a24d-46dd-b2a7-bcfc961c59a4" SourceId="1" SourceUrl="http://localhost:14174/ShapeService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

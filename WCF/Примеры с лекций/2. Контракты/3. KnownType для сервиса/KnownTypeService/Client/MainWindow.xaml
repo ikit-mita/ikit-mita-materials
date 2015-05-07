@@ -1,0 +1,16 @@
+﻿<Window x:Class="Client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:client="clr-namespace:Client"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.DataContext>
+        <client:MainWindowViewModel />
+    </Window.DataContext>
+    <StackPanel>
+        <TextBlock Text="Тип" />
+        <TextBox Text="{Binding ShapeType, Mode=TwoWay}" />
+        <Button Content="Создать" Command="{Binding CreateShapeCommand}" />
+        <TextBlock Text="Фигура" />
+        <TextBox Text="{Binding CreatedShapeName}" />
+    </StackPanel>
+</Window>
