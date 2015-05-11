@@ -1,6 +1,6 @@
 ﻿namespace Calculator.Service
 {
-    public class CalcluatorService : ICalculatorService
+    public class CalculatorService : ICalculatorService
     {
         private readonly Logic.Calculator _calculator = new Logic.Calculator();
 

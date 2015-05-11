@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+﻿using System.Threading.Tasks;
 
 namespace Calculator.WebHost
 {
@@ -13,6 +8,7 @@ namespace Calculator.WebHost
     {
         public int Sum(int a, int b)
         {
+            Task.Delay(5000).Wait();
             return a + b;
         }
     }
