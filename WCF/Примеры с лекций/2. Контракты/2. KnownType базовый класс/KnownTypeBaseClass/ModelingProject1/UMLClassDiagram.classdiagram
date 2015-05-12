@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="6c1d23ce-9d0e-4dd8-befc-6dbcb093fd2d" name="UMLClassDiagram" linkedPackageId="81c2563f-ddbf-4fd7-8cd4-d2934af9fa58" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="2ce79a23-a653-499c-a0e5-d6d1384bf82c">
+      <profileInstance Id="481713ac-58a2-47ae-9fdc-5cf9d3c488c5" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="3bfbad67-9234-4620-b394-35cc77805f04">
+      <profileInstance Id="715af9c0-851c-4a54-b274-17a8e060c37f" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="624f8661-dd80-48d3-acc7-7164c0ba59de" name="Shape" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c3d7a566-03e5-4e51-9ecd-74a8e8a1d7f4" />
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a2e8028e-6f77-4ac2-9f80-88b3301cced0" name="Circle" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="bb6af865-3d16-49cb-86c6-f9518f950008" />
+        <generalsInternal>
+          <generalization Id="6884d145-5ab5-40ee-a1bf-f176d9851f17" isSubstitutable="false">
+            <classMoniker Id="624f8661-dd80-48d3-acc7-7164c0ba59de" LastKnownName="Shape" />
+            <elementDefinition Id="583f815d-b4a9-470f-930f-1ecd4a068329" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="9f85ac46-a4e2-4c61-9d1c-38402a599c0e" name="Square" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="fcc9abea-08c9-48c5-851d-45a8706803cc" />
+        <generalsInternal>
+          <generalization Id="0c6bd65f-a096-4851-920e-bab07744eaba" isSubstitutable="false">
+            <classMoniker Id="624f8661-dd80-48d3-acc7-7164c0ba59de" LastKnownName="Shape" />
+            <elementDefinition Id="fd264056-b628-4e65-9beb-ebdf8eb5bc2c" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="81c2563f-ddbf-4fd7-8cd4-d2934af9fa58" name="ModelingProject1">
+    <elementDefinition Id="149bddbb-791f-424b-a407-dff18f25a9f6" />
+  </package>
+</logicalClassDesignerModel>
