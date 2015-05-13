@@ -1,0 +1,9 @@
+﻿<Window x:Class="WpfClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <StackPanel>
+        <Button Name="TestButton" Content="Test" Click="ButtonBase_OnClick" />
+        <TextBox Name="ResTextBox" />
+    </StackPanel>
+</Window>
