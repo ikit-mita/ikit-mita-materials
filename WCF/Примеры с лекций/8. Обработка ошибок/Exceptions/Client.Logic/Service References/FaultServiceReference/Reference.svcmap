@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="623c24c2-bddd-4811-8e7d-f4eae94b7ef1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:50640/FaultService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="FaultService.wsdl" MetadataType="Wsdl" ID="defc0293-351b-4494-a86e-41e39ee9dc62" SourceId="1" SourceUrl="http://localhost:50640/FaultService.svc?wsdl" />
+    <MetadataFile FileName="FaultService.xsd" MetadataType="Schema" ID="139760df-f9a9-4229-ac99-683aee647822" SourceId="1" SourceUrl="http://localhost:50640/FaultService.svc?xsd=xsd0" />
+    <MetadataFile FileName="FaultService1.xsd" MetadataType="Schema" ID="917d9f4c-3fe3-4ff2-9e3e-a69ed33ffd89" SourceId="1" SourceUrl="http://localhost:50640/FaultService.svc?xsd=xsd2" />
+    <MetadataFile FileName="FaultService2.xsd" MetadataType="Schema" ID="afd700f4-22fd-4367-a503-68171c7793da" SourceId="1" SourceUrl="http://localhost:50640/FaultService.svc?xsd=xsd1" />
+    <MetadataFile FileName="FaultService.disco" MetadataType="Disco" ID="549e1d88-4558-46fc-9584-f98ceac04a7f" SourceId="1" SourceUrl="http://localhost:50640/FaultService.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
