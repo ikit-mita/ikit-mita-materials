@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Server.WebHost
 {
 
-    //http://www.codeproject.com/Articles/27308/WCF-A-few-tips
     /// <summary>
     /// Allows us to adorn the IService contract with this
     /// attribute to indicate that a specialized DataContractSerializer

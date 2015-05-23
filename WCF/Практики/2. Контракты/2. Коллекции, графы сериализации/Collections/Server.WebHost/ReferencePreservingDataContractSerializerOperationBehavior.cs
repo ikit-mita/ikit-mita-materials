@@ -9,7 +9,6 @@ using System.Xml;
 
 namespace Server.WebHost
 {
-    //http://www.codeproject.com/Articles/27308/WCF-A-few-tips
     /// <summary>
     /// A specialized DataContractSerializer that has 
     /// preserveObjectReferences set true, which allows for
@@ -36,6 +35,16 @@ namespace Server.WebHost
                 true/*preserveObjectReferences*/,
                 null/*dataContractSurrogate*/);
         }
+
+        public override XmlObjectSerializer CreateSerializer(Type type, string name, string ns, IList<Type> knownTypes)
+        {
+            return new DataContractSerializer(type, name, ns, knownTypes,
+                2147483646 /*maxItemsInObjectGraph*/,
+                false/*ignoreExtensionDataObject*/,
+                true/*preserveObjectReferences*/,
+                null/*dataContractSurrogate*/);
+        }
+
         #endregion
     }
 }
